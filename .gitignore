@@ -3,3 +3,4 @@ kernel/*.bin
 kernel/*.o
 drivers/*.o
 os-image
+.vscode/
