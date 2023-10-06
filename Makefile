@@ -1,3 +1,6 @@
+# GCC compiler options
+CFLAGS ?= -m32 -ffreestanding -fno-pie -mgeneral-regs-only
+
 # Automatically generate lists of sources using wildcards
 C_SOURCES = $(wildcard kernel/*.c drivers/*.c)
 HEADERS = $(wildcard kernel/*.h drivers/*.h)
@@ -26,7 +29,7 @@ kernel/kernel.bin: kernel/kernel_entry.o ${OBJ}
 # Generic rule for compiling C code to an object file
 # For simplicity, we kame C files depend on all header files
 %.o: %.c ${HEADERS}
-	gcc -m32 -ffreestanding -fno-pie -c $< -o $@
+	gcc $(CFLAGS) -c $< -o $@
 
 # Assembles the kernel_entry
 kernel/kernel_entry.o: kernel/kernel_entry.asm
